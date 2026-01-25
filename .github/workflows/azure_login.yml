@@ -1,25 +1,22 @@
-name: Azure Login Workflow
+name: Azure OIDC Login
 
 on:
-  workflow_dispatch:   # manual trigger
-  push:
-    branches: [ main ] # or your preferred branch
+  workflow_dispatch:
 
 jobs:
-  login-to-azure:
+  login:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # REQUIRED for OIDC federation
+      contents: read    # allows checkout
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Log in to Azure
+      - name: Azure Login with OIDC
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          # client-secret: ${{ secrets.Github_actions_EKS_AKS }}
-
-      - name: Verify Azure Login
-        run: |
-          az account show
+          # ⚠️ Do NOT include client-secret when using OIDC
