@@ -1,8 +1,0 @@
-- name: Build Docker image
-  run: docker build -t ghcr.io/owner/repo:latest .
-
-- name: Push to registry
-  run: docker push ghcr.io/owner/repo:latest
-
-- name: Deploy to Kubernetes
-  run: kubectl apply -f k8s/deployment.yaml
