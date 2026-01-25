@@ -1,3 +1,6 @@
+name: first workflow
+on: push
+
 - name: Build Docker image
   run: docker build -t ghcr.io/owner/repo:latest .
 
