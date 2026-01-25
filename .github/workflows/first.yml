@@ -1,5 +1,5 @@
 name: workflow1
-on: [psuh]
+on: push
 
 jobs:
   build and test:
