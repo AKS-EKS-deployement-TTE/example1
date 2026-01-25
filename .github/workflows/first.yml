@@ -9,6 +9,6 @@ jobs:
         uses: actions/checkout@v4
       - name: install pyhon
         uses: actions/setup-node@v4
-      - name: install dependencies
-        run: npm install
+      - name: version details
+        run: python -v
  
