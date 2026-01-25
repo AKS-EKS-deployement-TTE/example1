@@ -2,11 +2,11 @@ name: workflow1
 on: push
 
 jobs:
-  build and test:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repos
-        usese: actions/checkout@v4
+        uses: actions/checkout@v4
       - name: install pyhon
         uses: actions/setup-node@v4
       - name: install dependencies
